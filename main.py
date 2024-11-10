@@ -3,7 +3,7 @@ from network.layer import Layer
 from network.activation import Activation
 from helpers.activations import tanh, tanh_prime
 from helpers.losses import mse, mse_prime
-from dataset_prep import (
+from helpers.dataset_prep import (
     convert_dataset_to_numpy,
     split_dataset,
     preprocess_dataset,
