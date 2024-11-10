@@ -3,12 +3,7 @@ from network.layer import Layer
 from network.activation import Activation
 from helpers.activations import tanh, tanh_prime
 from helpers.losses import mse, mse_prime
-from helpers.dataset_prep import (
-    convert_dataset_to_numpy,
-    split_dataset,
-    preprocess_dataset,
-    distribute_class,
-)
+from helpers.dataset_prep import PreProcessor
 import numpy as np
 from helpers.benchmark import calculate_accuracy
 
@@ -17,9 +12,13 @@ np.random.seed(5)
 print("Dataset ready")
 
 print("Preprocessing...")
-x_train, y_train, x_test, y_test = preprocess_dataset(
-    split_dataset(distribute_class(convert_dataset_to_numpy()))
-)
+processor = PreProcessor("dataset")
+x_train, y_train, x_test, y_test = processor.get_result()
+
+print("x_train shape: ", x_train.shape)
+print("y_train shape: ", y_train.shape)
+print("x_test shape: ", x_test.shape)
+print("y_test shape: ", y_test.shape)
 
 # network
 print("Setting up neural network...")
