@@ -1,6 +1,6 @@
 from network import Network
-from fc_layer import FCLayer
-from activation_layer import ActivationLayer
+from layer import FCLayer
+from activation import Activation
 from activations import tanh, tanh_prime
 from losses import mse, mse_prime
 from dataset_prep import (
@@ -23,11 +23,11 @@ x_train, y_train, x_test, y_test = preprocess_dataset(
 print("Setting up neural network...")
 net = Network()
 net.add(FCLayer(28 * 28, 100))  # input_shape=(1, 28*28)    ;   output_shape=(1, 100)
-net.add(ActivationLayer(tanh, tanh_prime))
+net.add(Activation(tanh, tanh_prime))
 net.add(FCLayer(100, 50))  # input_shape=(1, 100)      ;   output_shape=(1, 50)
-net.add(ActivationLayer(tanh, tanh_prime))
+net.add(Activation(tanh, tanh_prime))
 net.add(FCLayer(50, 10))  # input_shape=(1, 50)       ;   output_shape=(1, 10)
-net.add(ActivationLayer(tanh, tanh_prime))
+net.add(Activation(tanh, tanh_prime))
 
 # training
 print("Training...")

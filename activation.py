@@ -1,8 +1,8 @@
-from layer import Layer
+from base_layer import BaseLayer
 
 
 # inherit from base class Layer
-class ActivationLayer(Layer):
+class Activation(BaseLayer):
     def __init__(self, activation, activation_prime):
         self.activation = activation
         self.activation_prime = activation_prime
