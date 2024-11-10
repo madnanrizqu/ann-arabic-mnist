@@ -6,7 +6,7 @@
 2. Install deps: `pip install -r requirements.tsx`
 3. Prepare dataset by extracting dataset.zip. In mac / unix bases system can use: `unzip dataset.zip`
 4. Tryout running ANN on example_xor.py, which is a sanity check that validates the ANN is learning: `python demo_xor.py`
-5. Tryout running ANN on original MNIST dataset: `python demo_mnist.py`
+5. Tryout running ANN on english MNIST dataset: `python demo_mnist.py`
 6. Tryout running ANN on our dataset: `python main.py`
 
 ## Initial Results
