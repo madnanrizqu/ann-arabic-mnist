@@ -1,13 +1,40 @@
-# Base class
 class BaseLayer:
+    """
+    abstract base class for neural network layers
+    """
+
     def __init__(self):
-        self.input = None
-        self.output = None
+        # store input and output values for each layer
+        self.input_data = None
+        self.output_data = None
 
-    # computes the output Y of a layer for a given input X
-    def forward_propagation(self, input):
-        raise NotImplementedError
+    def forward_propagation(self, input_data):
+        """
+        process input data and compute layer output
 
-    # computes dE/dX for a given dE/dY (and update parameters if any)
-    def backward_propagation(self, output_error, learning_rate):
-        raise NotImplementedError
+        args:
+            input_data: input values to process
+
+        returns:
+            layer output
+
+        raises:
+            NotImplementedError: must be implemented by child classes
+        """
+        raise NotImplementedError("Forward propagation not implemented!")
+
+    def backward_propagation(self, error_gradient, learning_rate):
+        """
+        compute gradients and update layer parameters
+
+        args:
+            error_gradient: gradient of error with respect to layer output
+            learning_rate: step size for parameter updates
+
+        returns:
+            gradient of error with respect to layer input
+
+        raises:
+            NotImplementedError: must be implemented by child classes
+        """
+        raise NotImplementedError("Backward propagation not implemented!")

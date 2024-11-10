@@ -1,5 +1,5 @@
 from network import Network
-from layer import FCLayer
+from layer import Layer
 from activation import Activation
 from activations import tanh, tanh_prime
 from losses import mse, mse_prime
@@ -33,11 +33,11 @@ y_test = to_categorical(y_test)
 # network
 print("Setting up neural network...")
 net = Network()
-net.add(FCLayer(28 * 28, 100))  # input_shape=(1, 28*28)    ;   output_shape=(1, 100)
+net.add(Layer(28 * 28, 100))  # input_shape=(1, 28*28)    ;   output_shape=(1, 100)
 net.add(Activation(tanh, tanh_prime))
-net.add(FCLayer(100, 50))  # input_shape=(1, 100)      ;   output_shape=(1, 50)
+net.add(Layer(100, 50))  # input_shape=(1, 100)      ;   output_shape=(1, 50)
 net.add(Activation(tanh, tanh_prime))
-net.add(FCLayer(50, 10))  # input_shape=(1, 50)       ;   output_shape=(1, 10)
+net.add(Layer(50, 10))  # input_shape=(1, 50)       ;   output_shape=(1, 10)
 net.add(Activation(tanh, tanh_prime))
 
 # training

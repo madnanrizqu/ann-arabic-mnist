@@ -1,7 +1,7 @@
 import numpy as np
 
 from network import Network
-from layer import FCLayer
+from layer import Layer
 from activation import Activation
 from activations import tanh, tanh_prime
 from losses import mse, mse_prime
@@ -15,9 +15,9 @@ y_test = np.array([[[0]], [[1]], [[1]], [[0]]])
 
 # network
 net = Network()
-net.add(FCLayer(2, 3))
+net.add(Layer(2, 3))
 net.add(Activation(tanh, tanh_prime))
-net.add(FCLayer(3, 1))
+net.add(Layer(3, 1))
 net.add(Activation(tanh, tanh_prime))
 
 # train
