@@ -1,10 +1,10 @@
 import numpy as np
 
-from network import Network
-from layer import Layer
-from activation import Activation
-from activations import tanh, tanh_prime
-from losses import mse, mse_prime
+from network.network import Network
+from network.layer import Layer
+from network.activation import Activation
+from helpers.activations import tanh, tanh_prime
+from helpers.losses import mse, mse_prime
 
 # training data
 x_train = np.array([[[0, 0]], [[0, 1]], [[1, 0]], [[1, 1]]])

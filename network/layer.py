@@ -1,4 +1,4 @@
-from base_layer import BaseLayer
+from network.base_layer import BaseLayer
 import numpy as np
 
 

@@ -1,8 +1,8 @@
-from network import Network
-from layer import Layer
-from activation import Activation
-from activations import tanh, tanh_prime
-from losses import mse, mse_prime
+from network.network import Network
+from network.layer import Layer
+from network.activation import Activation
+from helpers.activations import tanh, tanh_prime
+from helpers.losses import mse, mse_prime
 from dataset_prep import (
     convert_dataset_to_numpy,
     split_dataset,
@@ -10,7 +10,7 @@ from dataset_prep import (
     distribute_class,
 )
 import numpy as np
-from benchmark import calculate_accuracy
+from helpers.benchmark import calculate_accuracy
 
 print("Dataset ready")
 

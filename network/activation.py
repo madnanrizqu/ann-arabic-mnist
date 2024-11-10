@@ -1,9 +1,9 @@
-from base_layer import BaseLayer
+from network.base_layer import BaseLayer
 
 
 class Activation(BaseLayer):
     """
-    applies an activation function
+    applies an activation function. acts as an layer
     """
 
     def __init__(self, activation_function, activation_derivative):
