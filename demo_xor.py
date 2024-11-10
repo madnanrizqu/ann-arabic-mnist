@@ -1,6 +1,6 @@
 import numpy as np
 
-from network.network import Network
+from network.network import NeuralNetwork
 from network.layer import Layer
 from network.activation import Activation
 from helpers.activations import tanh, tanh_prime
@@ -14,7 +14,7 @@ x_test = np.array([[[0, 0]], [[0, 1]], [[1, 0]], [[1, 1]]])
 y_test = np.array([[[0]], [[1]], [[1]], [[0]]])
 
 # network
-net = Network()
+net = NeuralNetwork()
 net.add(Layer(2, 3))
 net.add(Activation(tanh, tanh_prime))
 net.add(Layer(3, 1))

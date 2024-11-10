@@ -1,62 +1,95 @@
 import numpy as np
 
 
-class Network:
-    def __init__(self):
-        self.layers = []
-        self.loss = None
-        self.loss_prime = None
+class NeuralNetwork:
+    """
+    neural network implementation supporting multiple layers and custom loss functions
+    """
 
-    # add layer to network
+    def __init__(self):
+        """initialize an empty neural network"""
+        self.layers = []  # list to store network layers
+        self.loss_function = None  # loss function for training
+        self.loss_derivative = None  # derivative of loss function for backprop
+
     def add(self, layer):
+        """
+        add a layer to the network
+
+        args:
+            layer: Layer object to add to the network
+        """
         self.layers.append(layer)
 
-    # set loss to use
-    def use(self, loss, loss_prime):
-        self.loss = loss
-        self.loss_prime = loss_prime
+    def use(self, loss_function, loss_derivative):
+        """
+        set the loss function for training
 
-    # predict output for given input
+        args:
+            loss_function: function to calculate loss
+            loss_derivative: derivative of loss function for backprop
+        """
+        self.loss_function = loss_function
+        self.loss_derivative = loss_derivative
+
     def predict(self, input_data):
-        # sample dimension first
-        samples = len(input_data)
-        result_all = []
-        result_single = []
+        """
+        generate predictions for input data
 
-        # run network over all samples
-        for i in range(samples):
-            # forward propagation
-            output = input_data[i]
+        args:
+            input_data: input samples to predict
+
+        returns:
+            list containing [all_layer_outputs, predicted_classes]
+        """
+        num_samples = len(input_data)
+        layer_outputs = []  # store full layer outputs
+        predicted_classes = []  # store single class predictions
+
+        # process each sample
+        for i in range(num_samples):
+            # forward propagation through all layers
+            current_output = input_data[i]
             for layer in self.layers:
-                output = layer.forward_propagation(output)
+                current_output = layer.forward_propagation(current_output)
 
-            result_all.append(output)
-            result_single.append(np.argmax(output, axis=1)[0])
+            # store results
+            layer_outputs.append(current_output)
+            predicted_classes.append(np.argmax(current_output, axis=1)[0])
 
-        return [result_all, result_single]
+        return [layer_outputs, predicted_classes]
 
-    # train the network
     def fit(self, x_train, y_train, epochs, learning_rate):
-        # sample dimension first
-        samples = len(x_train)
+        """
+        train the neural network
+
+        args:
+            x_train: training input data
+            y_train: training target data
+            epochs: number of training epochs
+            learning_rate: learning rate for gradient descent
+        """
+        num_samples = len(x_train)
 
         # training loop
-        for i in range(epochs):
-            err = 0
-            for j in range(samples):
-                # forward propagation
-                output = x_train[j]
-                for layer in self.layers:
-                    output = layer.forward_propagation(output)
+        for epoch in range(epochs):
+            total_error = 0
 
-                # compute loss (for display purpose only)
-                err += self.loss(y_train[j], output)
+            # process each training sample
+            for i in range(num_samples):
+                # forward propagation
+                current_output = x_train[i]
+                for layer in self.layers:
+                    current_output = layer.forward_propagation(current_output)
+
+                # calculate error
+                total_error += self.loss_function(y_train[i], current_output)
 
                 # backward propagation
-                error = self.loss_prime(y_train[j], output)
+                gradient = self.loss_derivative(y_train[i], current_output)
                 for layer in reversed(self.layers):
-                    error = layer.backward_propagation(error, learning_rate)
+                    gradient = layer.backward_propagation(gradient, learning_rate)
 
-            # calculate average error on all samples
-            err /= samples
-            print("epoch %d/%d   error=%f" % (i + 1, epochs, err))
+            # calculate average error
+            average_error = total_error / num_samples
+            print(f"Epoch {epoch + 1}/{epochs} - Average Error: {average_error:.6f}")

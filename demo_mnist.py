@@ -1,4 +1,4 @@
-from network.network import Network
+from network.network import NeuralNetwork
 from network.layer import Layer
 from network.activation import Activation
 from helpers.activations import tanh, tanh_prime
@@ -27,7 +27,7 @@ y_test = to_categorical(y_test)
 
 # network
 print("Setting up neural network...")
-net = Network()
+net = NeuralNetwork()
 net.add(Layer(28 * 28, 100))
 net.add(Activation(tanh, tanh_prime))
 net.add(Layer(100, 50))

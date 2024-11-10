@@ -1,4 +1,4 @@
-from network.network import Network
+from network.network import NeuralNetwork
 from network.layer import Layer
 from network.activation import Activation
 from helpers.activations import tanh, tanh_prime
@@ -21,7 +21,7 @@ x_train, y_train, x_test, y_test = preprocess_dataset(
 
 # network
 print("Setting up neural network...")
-net = Network()
+net = NeuralNetwork()
 net.add(Layer(28 * 28, 100))  # input_shape=(1, 28*28)    ;   output_shape=(1, 100)
 net.add(Activation(tanh, tanh_prime))
 net.add(Layer(100, 50))  # input_shape=(1, 100)      ;   output_shape=(1, 50)
