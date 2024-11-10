@@ -6,6 +6,8 @@ from network.activation import Activation
 from helpers.activations import tanh, tanh_prime
 from helpers.losses import mse, mse_prime
 
+np.random.seed(5)
+
 # training data
 x_train = np.array([[[0, 0]], [[0, 1]], [[1, 0]], [[1, 1]]])
 y_train = np.array([[[0]], [[1]], [[1]], [[0]]])

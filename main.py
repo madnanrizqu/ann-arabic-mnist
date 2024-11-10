@@ -12,6 +12,8 @@ from helpers.dataset_prep import (
 import numpy as np
 from helpers.benchmark import calculate_accuracy
 
+np.random.seed(5)
+
 print("Dataset ready")
 
 print("Preprocessing...")

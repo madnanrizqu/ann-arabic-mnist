@@ -10,6 +10,8 @@ from keras.utils import to_categorical
 from helpers.benchmark import calculate_accuracy
 import numpy as np
 
+np.random.seed(5)
+
 # load MNIST from server
 print("Downloading dataset...")
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
