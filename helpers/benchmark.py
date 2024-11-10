@@ -7,7 +7,7 @@ def calculate_accuracy(predictions, y_test):
     predicted_classes = predicted_classes.flatten()
     actual_classes = np.argmax(y_test, axis=1)
 
-    print("\nSample predictions vs actuals:")
+    print("Sample predictions vs actuals:")
     for i in range(100):
         print(f"Prediction: {predicted_classes[i]}, Actual: {actual_classes[i]}")
 
