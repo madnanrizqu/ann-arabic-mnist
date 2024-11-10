@@ -99,5 +99,6 @@ def preprocess_dataset(dataset):
 # y_test should look like: (1000, 10)
 # visualize_dataset_shapes(x_train, y_train, x_test, y_test)
 
-# all class should be distributed evenly
+# all class should be distributed evenly per 1000 datum
+# so each 1000 datum, contains 100 class 0, 100 class 1, ..., 100 class 10
 # visualize_distribution(y_train, y_test)
