@@ -9,7 +9,7 @@
 5. Tryout running ANN on original MNIST dataset: `python demo_mnist.py`
 6. Tryout running ANN on our dataset: `python main.py`
 
-## Init Neural Network Results
+## Initial Results
 
 ### epoch=1; learning_rate=0.001 (expected to be bad)
 
