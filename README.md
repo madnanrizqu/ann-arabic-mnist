@@ -456,3 +456,11 @@ Prediction: 0, Actual: 0
 Prediction: 0, Actual: 0
 Test Accuracy: 87.30%
 ```
+
+## Dataset Shape
+
+Distribution:
+![alt text](docs/dataset_split_distribution.png)
+
+Shape:
+![alt text](docs/dateset_split_shape.png)
