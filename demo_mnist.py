@@ -27,6 +27,11 @@ x_test = x_test.astype("float32")
 x_test /= 255
 y_test = to_categorical(y_test)
 
+print("x_train shape: ", x_train.shape)
+print("y_train shape: ", y_train.shape)
+print("x_test shape: ", x_test.shape)
+print("y_test shape: ", y_test.shape)
+
 # network
 print("Setting up neural network...")
 net = NeuralNetwork()
